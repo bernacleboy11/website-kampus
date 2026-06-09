@@ -77,33 +77,37 @@
         FASILITAS KAMPUS
     </h1>
 
-    <div class="fasilitas-container">
+    <div class="slider-container">
 
-        <div class="fasilitas-card">
-            <img src="lb1.jpeg" class="fasilitas-img">
-            <h3>Laboratorium Komputer</h3>
-            <p>Digunakan untuk praktikum pemrograman dan jaringan.</p>
-        </div>
+    <div class="slide active">
+        <img src="lb1.jpeg" class="slider-img">
+        <h3>Laboratorium Komputer</h3>
+        <p>Digunakan untuk praktikum pemrograman dan jaringan.</p>
+    </div>
 
-        <div class="fasilitas-card">
-            <img src="k1.jpeg" class="fasilitas-img">
-            <h3>Ruang Kelas</h3>
-            <p>Ruang belajar yang nyaman dan dilengkapi AC.</p>
-        </div>
+    <div class="slide">
+        <img src="k1.jpeg" class="slider-img">
+        <h3>Ruang Kelas</h3>
+        <p>Ruang belajar yang nyaman dan dilengkapi AC.</p>
+    </div>
 
-        <div class="fasilitas-card">
-            <img src="p1.jpeg" class="fasilitas-img">
-            <h3>Perpustakaan</h3>
-            <p>Menyediakan berbagai referensi akademik mahasiswa.</p>
-        </div>
+    <div class="slide">
+        <img src="p1.jpeg" class="slider-img">
+        <h3>Perpustakaan</h3>
+        <p>Menyediakan berbagai referensi akademik mahasiswa.</p>
+    </div>
 
-        <div class="fasilitas-card">
-            <img src="l1.jpeg" class="fasilitas-img">
-            <h3>Lift</h3>
-            <p>Tersedia untuk memudahkan akses mahasiswa, dosen, dan staf menuju setiap lantai gedung dengan nyaman dan efisien.</p>
-        </div>
+    <div class="slide">
+        <img src="l1.jpeg" class="slider-img">
+        <h3>Lift</h3>
+        <p>Tersedia untuk memudahkan akses mahasiswa, dosen, dan staf.</p>
+    </div>
+
+    <button class="prev" onclick="changeSlide(-1)">❮</button>
+    <button class="next" onclick="changeSlide(1)">❯</button>
 
     </div>
+
 
 </div>
 
@@ -170,6 +174,39 @@ function toggleMenu() {
 
 </script>
 
+<script>
 
+function toggleMenu() {
+    document.getElementById("navbarMenu").classList.toggle("active");
+}
+
+let currentSlide = 0;
+const slides = document.querySelectorAll(".slide");
+
+function showSlide(index){
+
+    slides.forEach(slide => {
+        slide.classList.remove("active");
+    });
+
+    if(index >= slides.length){
+        currentSlide = 0;
+    }
+
+    if(index < 0){
+        currentSlide = slides.length - 1;
+    }
+
+    slides[currentSlide].classList.add("active");
+}
+
+function changeSlide(n){
+    currentSlide += n;
+    showSlide(currentSlide);
+}
+
+showSlide(currentSlide);
+
+</script>
 </body>
 </html>
